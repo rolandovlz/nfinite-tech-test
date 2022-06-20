@@ -1,12 +1,17 @@
 import React from 'react'
 import styled from 'styled-components'
 
-const StyledSpan = styled.span`
-  margin-right: 1rem;
-`
-
 const StyledImg = styled.img`
   max-width: 100px;
+`
+
+const StyledResult = styled.div`
+  width: 2rem;
+  height: 2rem;
+  display: flex;
+  border-radius: 50%;
+  align-items: center;
+  justify-content: center;
 `
 
 export const ResultsStep = ({ results }) => {
@@ -15,21 +20,15 @@ export const ResultsStep = ({ results }) => {
 
   return (
     <>
-      <table>
-        {/* <thead>
-          <tr>
-            <th></th>
-            <th>id</th>
-            <th>name</th>
-            <th>image</th>
-          </tr>
-        </thead> */}
+      <table style={{ backgroundColor: '#dcdcdc', borderCollapse: 'collapse' }}>
         <tbody>
           {data &&
-            data.map(item => {
+            data.map((item, idx) => {
               return (
-                <tr key={item.id}>
-                  <td>ok</td>
+                <tr key={`${item.id}-${idx}`} style={{ textAlign: 'center', border: '2px solid black' }}>
+                  <td>
+                    <StyledResult style={{ backgroundColor: '#90ee90' }}>ok</StyledResult>
+                  </td>
                   <td>{item.id}</td>
                   <td>{item.name}</td>
                   <td>
@@ -39,37 +38,20 @@ export const ResultsStep = ({ results }) => {
               )
             })}
           {errors &&
-            errors.map(error => {
+            errors.map((error, idx) => {
               return (
-                <tr key={error.id}>
-                  <td>ko</td>
+                <tr key={`${error.id}-${idx}`} style={{ textAlign: 'center', border: '2px solid black' }}>
+                  <td>
+                    <StyledResult style={{ backgroundColor: '#ff8a8a' }}>ko</StyledResult>
+                  </td>
                   <td>{error.id}</td>
                   <td>{error.message}</td>
+                  <td></td>
                 </tr>
               )
             })}
         </tbody>
       </table>
-      {/* {data &&
-        data.map(item => {
-          return (
-            <div>
-              <StyledSpan>ok</StyledSpan>
-              <StyledSpan>{item.id}</StyledSpan>
-              <StyledSpan>{item.name}</StyledSpan>
-              <StyledImg src={item.picture.url} />
-            </div>
-          )
-        })}
-      {errors &&
-        errors.map(error => {
-          return (
-            <div>
-              <StyledSpan>{error.id}</StyledSpan>
-              <StyledSpan>{error.message}</StyledSpan>
-            </div>
-          )
-        })} */}
     </>
   )
 }
