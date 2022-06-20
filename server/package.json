@@ -9,7 +9,9 @@
     "@babel/cli": "^7.14.5",
     "@babel/preset-env": "^7.14.7",
     "cors": "^2.8.5",
-    "express": "~4.16.1"
+    "csv-parse": "^5.2.0",
+    "express": "~4.16.1",
+    "multer": "^1.4.5-lts.1"
   },
   "engines": {
     "node": ">=12.x"
