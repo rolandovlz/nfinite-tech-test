@@ -21,6 +21,6 @@
     "nodemon": "^2.0.9"
   },
   "scripts": {
-    "start": "nodemon index.js --exec babel-node"
+    "start": "node index.js"
   }
 }

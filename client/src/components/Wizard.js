@@ -30,6 +30,7 @@ export const Wizard = () => {
   const [currentStep, setCurrentStep] = useState(1)
   const [selectedFile, setSelectedFile] = useState()
   const [results, setResults] = useState(null)
+  const baseUrl = window.location.origin
 
   const handleValidateFile = () => {
     if (!selectedFile || selectedFile?.type !== 'text/csv') return
@@ -37,7 +38,7 @@ export const Wizard = () => {
     const formData = new FormData()
     formData.append('file', selectedFile)
     axios
-      .post('http://localhost:5000/upload', formData, {
+      .post(`${baseUrl}/upload`, formData, {
         headers: {
           'content-type': 'multipart/form-data',
         },

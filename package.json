@@ -12,6 +12,7 @@
     "start": "echo 'please do \"yarn start\" in each workspace directory'",
     "start:client": "yarn workspace client start",
     "start:server": "yarn workspace server start",
+    "heroku-postbuild": "cd client && yarn install && yarn build",
     "prettier:fix": "prettier --write '**/*.{js,md,jsx,json,css,scss,yml,yaml,html}'"
   },
   "dependencies": {

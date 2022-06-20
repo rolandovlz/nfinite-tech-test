@@ -1,15 +1,17 @@
-import express from 'express'
-import cors from 'cors'
-import os from 'os'
-import multer from 'multer'
-import { parse } from 'csv-parse'
-import fs from 'fs'
+const express = require('express')
+const cors = require('cors')
+const os = require('os')
+const multer = require('multer')
+const { parse } = require('csv-parse')
+const fs = require('fs')
+const path = require('path')
 
 const app = express()
 const port = process.env.PORT || 5000
 const upload = multer({ dest: os.tmpdir() })
 
 app.use(cors())
+app.use(express.static(path.resolve(__dirname, '../client/build')))
 
 app.post('/upload', upload.single('file'), (req, res) => {
   const file = req.file
